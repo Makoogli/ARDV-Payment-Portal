@@ -1,0 +1,42 @@
+{
+    "Host 5 Additional Screens":{
+        "monthly":{
+            "id":"price_1TIQlNEnzmWirCWWpnHvYcov",
+            "price":149
+        },
+        "yearly":{
+            "id":"price_1TNkjIEnzmWirCWWe8N0qPJK",
+            "price":1609
+        }
+    },
+    "Advertising First 10 Screens":{
+        "monthly":{
+            "id":"price_1TIQpiEnzmWirCWWjScBHhOf",
+            "price":299
+        },
+        "yearly":{
+            "id":"price_1TNkiBEnzmWirCWWQGVByMtA",
+            "price":3229
+        }
+    },
+    "Incremental 10 Screens":{
+        "monthly":{
+            "id":"price_1TIQrxEnzmWirCWWr1Iu2XFD",
+            "price":149
+        },
+        "yearly":{
+            "id":"price_1TNkhLEnzmWirCWW3qvMy8f5",
+            "price":1609
+        }
+    },
+    "Incremental 1 Screen":{
+        "monthly":{
+            "id":"price_1TIQuiEnzmWirCWWvufB1wOd",
+            "price":49
+        },
+        "yearly":{
+            "id":"price_1TNkgXEnzmWirCWWiNTVWos6",
+            "price":529
+        }
+    }
+}
