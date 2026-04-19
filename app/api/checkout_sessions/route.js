@@ -21,7 +21,7 @@ export async function POST(req) {
 
     const session = await stripe.checkout.sessions.create({
       mode:'subscription',
-      metadata:{oneYearSchedule:'monthly'},
+      metadata:{oneYearSchedule:paymentFrequency},
       success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}`,
       line_items: line_items
     });

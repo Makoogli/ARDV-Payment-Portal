@@ -60,6 +60,8 @@ async function applyOneYearSchedule(subscriptionID,paymentFrequency){
   }else if(paymentFrequency == 'yearly'){
     iterations = 1;
   }
+  console.log('PAYMENT FREQUENCY =',paymentFrequency);
+  console.log('ITERATIONS =',iterations);
   //works for carts with any quantity of one subscription product
   const schedule = await stripe.subscriptionSchedules.create({
     from_subscription:subscriptionID
