@@ -76,3 +76,13 @@ button {
     border-radius: 8px;
     border-width: 1px;
 }
+
+.partners_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#discounts {
+  display: none;
+}

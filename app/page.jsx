@@ -15,7 +15,7 @@ export default async function IndexPage({ searchParams }) {
   }
   return (
     <form action="/api/checkout_sessions" method="POST">
-      <InputFormData catalog={catalog}/>
+      <InputFormData catalog={catalog} prefetch={false}/>
       <button type="submit" role="link">
         Checkout
       </button>

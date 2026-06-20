@@ -17,6 +17,14 @@
         "yearly":{
             "id":"price_1TO03AIZzCS53DN4NYOhS6RZ",
             "price":3229
+        },
+        "yearly20":{
+            "id":"price_1TkEv2IZzCS53DN4Z1xWRvkM",
+            "price":2869
+        },
+        "yearly30":{
+            "id":"price_1TkEv2IZzCS53DN45wwhkMFC",
+            "price":2509
         }
     },
     "Incremental 10 Billboards":{

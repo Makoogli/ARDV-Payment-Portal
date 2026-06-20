@@ -12,8 +12,10 @@ export async function POST(req) {
     const origin = headersList.get('origin');
 
     const paymentFrequency = formData.get('paymentFrequency');
+    const backup = paymentFrequency.startsWith('yearly')?'yearly':false;
 
-    const cart = Object.entries(catalog).map(e=>[parseInt(formData.get(e[0])),e[1][paymentFrequency].id]).filter(e=>e[0] != 0);
+    const cart = Object.entries(catalog).map(e=>[parseInt(formData.get(e[0])),(e[1][paymentFrequency]||e[1][backup]).id]).filter(e=>e[0] != 0);
+    console.log('CART:',cart);
     let line_items = [];
     cart.forEach(e=>{
       line_items.push({price:e[1],quantity:e[0]});
