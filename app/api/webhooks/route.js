@@ -4,6 +4,7 @@ import { headers } from 'next/headers'
 import { stripe } from '../../../lib/stripe'
 
 export async function POST(req) {
+  console.log(req);
   let event
 
   try {
