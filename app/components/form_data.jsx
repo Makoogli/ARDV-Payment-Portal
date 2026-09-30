@@ -4,12 +4,15 @@ import React from 'react';
 
 export function InputFormData({catalog}){
     function updatePrices(key,dif){
+      console.log(catalog);
         let sumMonthly = 0;
         let sumYearly = 0;
         let sumYearly20off = 0;
         let sumYearly30off = 0;
-        let sumYearly20pbb = 0;
-        let sumYearly10pbb = 0;
+        let sumMonthly99PerMonth = 0;
+        let sumMonthly199PerMonth = 0;
+        let sumYearly99PerMonth = 0;
+        let sumYearly199PerMonth = 0;
         Object.entries(catalog).forEach(e=>{
             if(e[0] == key){
                 document.getElementById(e[0]).value = Math.max(0,parseInt(document.getElementById(e[0]).value)+dif);
@@ -19,28 +22,28 @@ export function InputFormData({catalog}){
             sumYearly += q*e[1].yearly.price;
             sumYearly20off += e[1].yearly20off?q*e[1].yearly20off.price:q*e[1].yearly.price;
             sumYearly30off += e[1].yearly30off?q*e[1].yearly30off.price:q*e[1].yearly.price;
-            sumYearly20pbb += e[1].yearly20pbb?q*e[1].yearly20pbb.price:q*e[1].yearly.price;
-            sumYearly10pbb += e[1].yearly10pbb?q*e[1].yearly10pbb.price:q*e[1].yearly.price;
+            sumMonthly99PerMonth += e[1].monthly99permonth?q*e[1].monthly99permonth.price:q*e[1].monthly.price;
+            sumMonthly199PerMonth += e[1].monthly199permonth?q*e[1].monthly199permonth.price:q*e[1].monthly.price;
+            sumYearly99PerMonth += e[1].yearly99permonth?q*e[1].yearly99permonth.price:q*e[1].yearly.price;
+            sumYearly199PerMonth += e[1].yearly199permonth?q*e[1].yearly199permonth.price:q*e[1].yearly.price;
         });
         document.getElementById('price-monthly').innerText = sumMonthly;
         document.getElementById('price-yearly').innerText = sumYearly;
         document.getElementById('price-yearly20off').innerText = sumYearly20off;
         document.getElementById('price-yearly30off').innerText = sumYearly30off;
-        document.getElementById('price-yearly20pbb').innerText = sumYearly20pbb;
-        document.getElementById('price-yearly10pbb').innerText = sumYearly10pbb;
-        document.getElementById('yearly-save').innerText = 12*sumMonthly-sumYearly;
+        document.getElementById('price-yearly-99-per-month').innerText = sumYearly99PerMonth;
+        document.getElementById('price-yearly-199-per-month').innerText = sumYearly199PerMonth;
+        document.getElementById('price-monthly-99-per-month').innerText = sumMonthly99PerMonth;
+        document.getElementById('price-monthly-199-per-month').innerText = sumMonthly199PerMonth;
     }
     function toggleShowDiscounts(){
       let discounts = document.getElementById('discounts');
-      let save = document.getElementById('saveYearly');
       if(discounts.show == true){
         discounts.show = false;
         discounts.style.display = 'none';
-        save.style.display = 'flex';
       }else{
         discounts.show = true;
         discounts.style.display = 'flex';
-        save.style.display = 'none';
       }
     }
     return (
@@ -62,7 +65,7 @@ export function InputFormData({catalog}){
                     Monthly: $<span id="price-monthly">0</span><input type="radio" name="paymentFrequency" value="monthly" required/>
                 </div>
                 <div className="price">
-                    Yearly: $<span id="price-yearly">0</span><input type="radio" name="paymentFrequency" value="yearly"/>
+                    Yearly 10% off: $<span id="price-yearly">0</span><input type="radio" name="paymentFrequency" value="yearly"/>
                 </div>
             </div>
             <div className="partners_container">
@@ -71,23 +74,26 @@ export function InputFormData({catalog}){
             <div id="discounts" className="prices hidden">
                 <div>
                     <div className="price">
-                        Yearly 20% off: $<span id="price-yearly20off">0</span><input type="radio" name="paymentFrequency" value="yearly20off"/>
+                        Year 20% off: $<span id="price-yearly20off">0</span><input type="radio" name="paymentFrequency" value="yearly20off"/>
                     </div>
                     <div className="price">
-                        Yearly 30% off: $<span id="price-yearly30off">0</span><input type="radio" name="paymentFrequency" value="yearly30off"/>
+                        $199/mo: $<span id="price-monthly-199-per-month">0</span><input type="radio" name="paymentFrequency" value="monthly199permonth"/>
+                    </div>
+                    <div className="price">
+                        $99/mo: $<span id="price-monthly-99-per-month">0</span><input type="radio" name="paymentFrequency" value="monthly99permonth"/>
                     </div>
                 </div>
                 <div>
                     <div className="price">
-                        Yearly $20/bb: $<span id="price-yearly20pbb">0</span><input type="radio" name="paymentFrequency" value="yearly20pbb"/>
+                        Yearly 30% off: $<span id="price-yearly30off">0</span><input type="radio" name="paymentFrequency" value="yearly30off"/>
                     </div>
                     <div className="price">
-                        Yearly $10/bb: $<span id="price-yearly10pbb">0</span><input type="radio" name="paymentFrequency" value="yearly10pbb"/>
+                        $199/mo {"("}-10%{")"}: $<span id="price-yearly-199-per-month">0</span><input type="radio" name="paymentFrequency" value="yearly199permonth"/>
+                    </div>
+                    <div className="price">
+                        $99/mo {"("}-10%{")"}: $<span id="price-yearly-99-per-month">0</span><input type="radio" name="paymentFrequency" value="yearly99permonth"/>
                     </div>
                 </div>
-            </div>
-            <div id="saveYearly" className="prices save">
-                Save with Yearly: <span>$<span id="yearly-save">0</span></span>
             </div>
         </div>
     )

@@ -12,7 +12,7 @@ export async function POST(req) {
     const origin = headersList.get('origin');
 
     const paymentFrequency = formData.get('paymentFrequency');
-    const backup = paymentFrequency.startsWith('yearly')?'yearly':false;
+    const backup = paymentFrequency.startsWith('yearly')?'yearly':'monthly';
 
     const cart = Object.entries(catalog).map(e=>[parseInt(formData.get(e[0])),(e[1][paymentFrequency]||e[1][backup]).id]).filter(e=>e[0] != 0);
     console.log('CART:',cart);
